@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Task</title>
+</head>
+<body>
+    <div>
+      <div style="display: flex; align-items: center;">
+        <u><h1>Q/A Tasks</h1></u>
+        <button style="height: 50px; width: 100px; position: relative; left: 560px;">Click</button>
+    </div>
+<input typr="text" placeholder="enter name" />
+<input typr="text" placeholder="enter name" />
+<input typr="text" placeholder="enter name" />
+<input typr="text" placeholder="enter name" />
+  <div style="border: 1px solid black; margin: 20px; padding: 20px; width: fit-content;">
+  <form>
+    <h3> Form Tracking</h3>
+    <label id="name_p">Name:-
+    <input type="text" name="name" placeholder="enter name" />
+    </label> </br> </br>
+  <label id="password_p">Password:-
+    <input type="password" name="password" placeholder="enter password" />
+    </label> </br> </br>
+  <label id="email_p">Email:-
+    <input type="email" name="email" placeholder="enter email" />
+    </label> </br> </br>
+<label id="number_p">Number:-
+    <input type="number" name="number" placeholder="enter number" />
+    </label> </br> </br>
+<input type="submit" id="submit_btn" />
+  </form>
+</div>
+<p> Buttons </p>
+<div>
+    <button id="red-btn" style="height: 40px; background-color: red;">Change background-color Red</button>
+    <button id="green-btn" style="height: 40px; background-color: green;">Change background-color Green</button>
+</div> </br>
+<label> Adress
+<input type="name" placeholder="enter adress" />
+    </label> </br> </br>
+  <label>Email:-
+    <input type="email" placeholder="enter email" />
+    </label> </br> </br>
+<label>Mobile Number:-
+    <input type="number" placeholder="enter mob Number" />
+    </label> </br> </br>
+</div>
+</body>
+<script>
+  var dataLayer = window.dataLayer || [];
+   var inputs = document.querySelectorAll("form input");
+   inputs.forEach(function(elem){
+   elem.addEventListener("change", function(e){
+    e.preventDefault()
+       dataLayer.push({
+         event: "Form_tracking",
+         eventCategory: "Form",
+         eventAction: "Form filled",
+         eventLabel: e.target.name,
+        })
+})
+})
+document.getElementById("submit_btn").addEventListener("click", function(e){
+    e.preventDefault()
+       dataLayer.push({
+         event: "Form_tracking",
+         eventCategory: "Form",
+         eventAction: "Form submit",
+         eventLabel: "Submit",
+        })
+          alert("Form Submitted");
+})
+
+    //Change bg color to red
+
+  var date = new Date();
+  date.setTime(date.getTime() + 1 * 60 * 1000);
+  var time = date.toUTCString();
+
+
+
+  document.getElementById("red-btn").addEventListener("click", function(){
+  document.body.style.backgroundColor= "red";
+  document.cookie = `color = red; expires = ${time}`;
+  localStorage.setItem("color", "red")
+  
+  
+})
+
+
+
+document.getElementById("green-btn").addEventListener("click", function(){
+  document.body.style.backgroundColor= "green";
+  document.cookie = `color = green; expires = ${time}`;
+  localStorage.setItem("color", "green")
+})
+
+</script>
+
+
+<!-- <button id="myButton">Change background</button> -->
+<!-- 
+<script>
+const button = document.querySelector("#myButton");
+
+
+button.addEventListener("click", function() {
+  document.body.style.backgroundColor = "red";
+
+
+  let date = new Date();
+  date.setTime(date.getTime() + (60 * 1000));
+  document.cookie = "background=red; expires=" + date.toUTCString();
+
+
+  setTimeout(function() {
+    document.body.style.backgroundColor = "";
+    document.cookie = "background=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  }, 60000);
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  let backgroundCookie = document.cookie.replace(/(?:(?:^|.*;\s*)background\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+  if (backgroundCookie === "red") {
+    document.body.style.backgroundColor = "red";
+  }
+});
+</script> -->
+
+</html>
